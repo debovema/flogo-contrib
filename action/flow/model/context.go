@@ -16,6 +16,8 @@ type FlowContext interface {
 
 	// Status gets the state of the Flow instance
 	Status() FlowStatus
+
+	WorkingData() data.MutableScope
 }
 
 // TaskContext is the execution context of the Task when executing
@@ -55,6 +57,8 @@ type TaskContext interface {
 	UpdateWorkingData(key string, value interface{}) error
 
 	GetWorkingData(key string) (*data.Attribute, bool)
+
+	FlowWorkingData() data.MutableScope
 }
 
 // LinkInstance is the instance of a link

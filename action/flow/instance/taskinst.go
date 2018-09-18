@@ -517,3 +517,7 @@ func (taskInst *TaskInst) appendErrorData(err error) {
 //	return ti.flowInst
 //}
 //
+
+func (ti *TaskInst) FlowWorkingData() data.MutableScope {
+	return ti.flowInst.WorkingData()
+}

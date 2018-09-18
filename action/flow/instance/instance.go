@@ -124,7 +124,7 @@ func (inst *Instance) Return(returnData map[string]*data.Attribute, err error) {
 	inst.returnError = err
 }
 
-func (inst *Instance) WorkingData() data.Scope {
+func (inst *Instance) WorkingData() data.MutableScope {
 	return inst
 }
 
