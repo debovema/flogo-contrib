@@ -17,7 +17,7 @@ func NewTestActivityContext(metadata *activity.Metadata) *TestActivityContext {
 		HostId:     "1",
 		HostRef:    "github.com/TIBCOSoftware/flogo-contrib/action/flow",
 		IoMetadata: &data.IOMetadata{Input: input, Output: output},
-		HostData:   data.NewSimpleScope(nil, nil),
+		HostData:   data.NewSimpleSyncScope(nil, nil),
 	}
 
 	return NewTestActivityContextWithAction(metadata, ac)
@@ -84,7 +84,7 @@ type TestActivityHost struct {
 	HostRef string
 
 	IoMetadata    *data.IOMetadata
-	HostData      data.Scope
+	HostData      data.MutableScope
 	ReplyData     map[string]interface{}
 	ReplyDataAttr map[string]*data.Attribute
 	ReplyErr      error
@@ -118,7 +118,7 @@ func (ac *TestActivityHost) Return(data map[string]*data.Attribute, err error) {
 	ac.ReplyErr = err
 }
 
-func (ac *TestActivityHost) WorkingData() data.Scope {
+func (ac *TestActivityHost) WorkingData() data.MutableScope {
 	return ac.HostData
 }
 
